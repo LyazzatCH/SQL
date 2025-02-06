@@ -1,0 +1,17 @@
+1) select
+      id,
+      t_date,
+      value,
+      sum(value) over ( order by t_date asc)
+      from  test;
+
+
+ 2) select 
+  s.t_date,
+  s.value,
+ sum(t2.value)
+   from test s
+    inner join test t2   
+   on t2.t_date <= s.t_date 
+   group by s.t_date, s.value 
+   order by s.t_date asc;
